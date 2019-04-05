@@ -117,14 +117,16 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "server=1" >> genix.conf_TEMP
   echo "daemon=1" >> genix.conf_TEMP
   echo "logtimestamps=1" >> genix.conf_TEMP
-  echo "maxconnections=16" >> genix.conf_TEMP
+  echo "maxconnections=64" >> genix.conf_TEMP
   echo "masternode=1" >> genix.conf_TEMP
   echo "" >> genix.conf_TEMP
 
-  echo "addnode=addnode=51.15.198.252" >> genix.conf_TEMP
+  echo "addnode=addnode=161.43.201.255" >> genix.conf_TEMP
 
   echo "" >> genix.conf_TEMP
   echo "port=$PORT" >> genix.conf_TEMP
+  echo "externalip=$IP" >> genix.conf_TEMP
+  echo "bind=$IP" >> genix.conf_TEMP
   echo "masternodeaddr=$IP:$PORT" >> genix.conf_TEMP
   echo "masternodeprivkey=$PRIVKEY" >> genix.conf_TEMP
   sudo ufw allow $PORT/tcp
