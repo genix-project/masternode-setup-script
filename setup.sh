@@ -2,7 +2,7 @@
 
 cd ~
 echo "****************************************************************************"
-echo "* Ubuntu 16.04 is the recommended opearting system for this install.       *"
+echo "* Ubuntu 18.04 is the recommended opearting system for this install.       *"
 echo "*                                                                          *"
 echo "* This script will install and configure your GENIX masternodes.  *"
 echo "****************************************************************************"
