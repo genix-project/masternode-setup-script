@@ -19,8 +19,7 @@ Now when all is ready, install Genix:
 
 wget https://github.com/genix-project/masternode-setup-script/releases/download/v1.0/genix-mn-setup.sh
 
-chmod +x genix-mn-setup.sh
-bash genix-mn-setup.sh
+chmod +x genix-mn-setup.sh && bash genix-mn-setup.sh
 While waiting for the script to finish, you can set up the local wallet:
 
 Make a receive address called MN1
