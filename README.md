@@ -17,7 +17,7 @@ To paste into a linux screen you right click in the screen once. After the reboo
 
 Now when all is ready, install Genix:
 
-wget https://raw.githubusercontent.com/genix-project/Masternode-Setup-Script/master/genix-mn-setup.sh
+wget https://github.com/genix-project/masternode-setup-script/releases/download/v1.0/genix-mn-setup.sh
 
 chmod +x genix-mn-setup.sh
 bash genix-mn-setup.sh
