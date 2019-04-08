@@ -133,7 +133,7 @@ function configure_masternode() {
 function addnodes() {
 	echo "Adding nodes..."
 	conffile=/root/.genixcore/genix.conf
-	echo -e "\addnode=45.77.125.15" >> ${conffile}
+	echo -e "addnode=45.77.125.15" >> ${conffile}
 	echo -e "addnode=198.12.95.122" >> ${conffile}
 	echo -e "addnode=149.28.56.171" >> ${conffile}
 	echo "Done..."
