@@ -82,7 +82,7 @@ done
 for i in `seq 1 1 $MNCOUNT`; do
   echo ""
   echo "Enter alias for new node"
-  read ALIAS  
+  read ALIAS
 
   echo ""
   echo "Enter port for node $ALIAS"
@@ -105,7 +105,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo '#!/bin/bash' > ~/bin/genix-cli_$ALIAS.sh
   echo "genix-cli -conf=$CONF_DIR/genix.conf -datadir=$CONF_DIR "'$*' >> ~/bin/genix-cli_$ALIAS.sh
   echo '#!/bin/bash' > ~/bin/genix-tx_$ALIAS.sh
-  echo "genix-tx -conf=$CONF_DIR/genix.conf -datadir=$CONF_DIR "'$*' >> ~/bin/genix-tx_$ALIAS.sh 
+  echo "genix-tx -conf=$CONF_DIR/genix.conf -datadir=$CONF_DIR "'$*' >> ~/bin/genix-tx_$ALIAS.sh
   chmod 755 ~/bin/genix*.sh
 
   mkdir -p $CONF_DIR
@@ -132,6 +132,47 @@ for i in `seq 1 1 $MNCOUNT`; do
   sudo ufw allow $PORT/tcp
 
   mv genix.conf_TEMP $CONF_DIR/genix.conf
-  
+
   sh ~/bin/genixd_$ALIAS.sh
 done
+
+echo "Do you want to install sentinel? (no if you did it before) [y/n]"
+read SENTINELSETUP
+
+if [[ $SENTINELSETUP =~ "y" ]] ; then
+    echo "Starting sentinel setup.."
+
+version=$(python -V 2>&1 | grep -Po '(?<=Python )(.+)')
+parsedVersion=$(echo "${version//./}")
+new=$(tr -dc '0-9' <<< $parsedVersion | cut -c1-4)
+
+if [[ "$new" -lt "3000" && "$new" -gt "2700" ]]
+then
+    echo "Valid version skipping py installation..."
+else
+    echo "Invalid version installing py..."
+    sudo apt-get install -y python
+fi
+
+  cd ~
+
+  sudo apt-get -y install virtualenv
+
+  git clone https://github.com/Twinky-kms/sentinel.git
+
+  echo "setting up sentinel..."
+
+  echo "dash_conf=$CONF_DIR/genix.conf" >> sentinel.conf_TEMP
+  echo "network=mainnet" >> sentinel.conf_TEMP
+  echo "db_name=database/sentinel.db" >> sentinel.conf_TEMP
+  echo "db_driver=sqlite" >> sentinel.conf_TEMP
+
+  mv sentinel.conf_TEMP $HOME/sentinel/sentinel.conf
+
+  cd ~/sentinel
+
+    virtualenv ./venv
+    ./venv/bin/pip install -r requirements.txt
+    crontab -l | { cat; echo "* * * * * cd /root/sentinel/ && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1"; } | crontab -
+    echo "all done"
+fi
