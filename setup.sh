@@ -85,7 +85,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   read ALIAS
 
   echo ""
-  echo "Enter port for node $ALIAS"
+  echo "Enter port 43649 for node $ALIAS"
   read PORT
 
   echo ""
