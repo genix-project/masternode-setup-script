@@ -121,7 +121,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "masternode=1" >> genix.conf_TEMP
   echo "" >> genix.conf_TEMP
 
-  echo "addnode=addnode=161.43.201.255" >> genix.conf_TEMP
+  echo "addnode=161.43.201.255" >> genix.conf_TEMP
 
   echo "" >> genix.conf_TEMP
   echo "port=$PORT" >> genix.conf_TEMP
