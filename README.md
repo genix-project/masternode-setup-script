@@ -31,7 +31,7 @@ https://github.com/genix-project/masternode-setup-script/tree/Ubuntu-16.04
 >  git checkout Ubuntu-16.04
 
 
->  chmod -R 755 genix-mn-setup.sh
+>  chmod -R 755 setup.sh
 
 
->  ./genix-mn-setup.sh
+>  ./setup.sh
