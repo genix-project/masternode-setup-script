@@ -44,7 +44,6 @@ if [[ $DOSETUP =~ "y" ]] ; then
   sudo swapon /var/swap.img
   sudo free
   sudo echo "/var/swap.img none swap sw 0 0" >> /etc/fstab
-fi
 
   cd
 
@@ -69,6 +68,7 @@ fi
   mkdir -p ~/bin
   echo 'export PATH=~/bin:$PATH' > ~/.bash_aliases
   source ~/.bashrc
+fi
 
 ## Setup conf
 mkdir -p ~/bin
