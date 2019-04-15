@@ -11,7 +11,7 @@ Local Desktop PC -
 >  Setup your masternode.conf
 
 
-On on VPS running ubuntu 18.04 -
+On on VPS running ubuntu 16.04 -
 
 >  git clone this repo
 
