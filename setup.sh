@@ -94,9 +94,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "Type the IP of this server, followed by [ENTER]:"
   read IP
 
-  echo ""
-  echo "Enter RPC Port (Any valid free port: i.E. 17100)"
-  read RPCPORT
+
 
   ALIAS=${ALIAS,,}
   CONF_DIR=~/.genixcore_$ALIAS
