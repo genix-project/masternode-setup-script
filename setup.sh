@@ -66,10 +66,7 @@ fi
 
 ## Setup conf
 mkdir -p ~/bin
-echo ""
-echo "Configure your masternodes now!"
-echo "Type the IP of this server, followed by [ENTER]:"
-read IP
+
 
 MNCOUNT=""
 re='^[0-9]+$'
@@ -93,6 +90,11 @@ for i in `seq 1 1 $MNCOUNT`; do
   read PRIVKEY
 
   echo ""
+  echo "Configure your masternodes now!"
+  echo "Type the IP of this server, followed by [ENTER]:"
+  read IP
+
+  echo ""
   echo "Enter RPC Port (Any valid free port: i.E. 17100)"
   read RPCPORT
 
@@ -112,7 +114,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> genix.conf_TEMP
   echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> genix.conf_TEMP
   echo "rpcallowip=127.0.0.1" >> genix.conf_TEMP
-  echo "rpcport=$RPCPORT" >> genix.conf_TEMP
+  echo "rpcport="`shuf -i 10000-30000 -n 1` >> genix.conf_TEMP
   echo "listen=1" >> genix.conf_TEMP
   echo "server=1" >> genix.conf_TEMP
   echo "daemon=1" >> genix.conf_TEMP
