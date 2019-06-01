@@ -2,7 +2,7 @@
 
 cd ~
 echo "****************************************************************************"
-echo "* Ubuntu 18.04 is the recommended opearting system for this install.       *"
+echo "* Ubuntu 18.04 is the recommended operating system for this install.       *"
 echo "*                                                                          *"
 echo "* This script will install and configure your GENIX masternodes.           *"
 echo "****************************************************************************"
@@ -94,7 +94,9 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "Type the IP of this server, followed by [ENTER]:"
   read IP
 
-
+  echo ""
+  echo "Enter RPC Port 4001"
+  read RPCPORT
 
   ALIAS=${ALIAS,,}
   CONF_DIR=~/.genixcore_$ALIAS
@@ -112,7 +114,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> genix.conf_TEMP
   echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> genix.conf_TEMP
   echo "rpcallowip=127.0.0.1" >> genix.conf_TEMP
-  echo "rpcport="`shuf -i 10000-30000 -n 1` >> genix.conf_TEMP
+  echo "rpcport=$RPCPORT" >> genix.conf_TEMP
   echo "listen=1" >> genix.conf_TEMP
   echo "server=1" >> genix.conf_TEMP
   echo "daemon=1" >> genix.conf_TEMP
@@ -158,7 +160,7 @@ fi
 
   sudo apt-get -y install virtualenv
 
-  git clone https://github.com/Twinky-kms/sentinel.git
+  git clone https://github.com/genix-project/sentinel.git
 
   echo "setting up sentinel..."
 
